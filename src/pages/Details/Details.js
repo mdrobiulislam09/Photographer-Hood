@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { PhotoView } from 'react-photo-view';
 // import { useQuery } from 'react-query';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../authprovider/AuthProvider';
@@ -16,10 +17,10 @@ const Details = () => {
     //         return data;
     //     }
     // })\
-    useEffect( () => {
+    useEffect(() => {
         fetch(`http://localhost:5000/review?email=${user?.email}`)
-        .then(res => res.json())
-        .then(data => setReview(data))
+            .then(res => res.json())
+            .then(data => setReview(data))
     }, [user?.email])
 
 
@@ -61,7 +62,12 @@ const Details = () => {
         <div>
             <section>
                 <div className=" w-full bg-base-100 shadow-xl">
-                    <figure><img src={picture} alt="imag" /></figure>
+                    <figure>
+                        <PhotoView src={picture}>
+                            <img src={picture} alt="phot" />
+                        </PhotoView>
+                        {/* <img src={picture} alt="imag" /> */}
+                    </figure>
                     <div className="card-body">
                         <h2 className="card-title">{servicename}</h2>
                         <h2 className="card-title">Price: {price}</h2>
@@ -79,7 +85,7 @@ const Details = () => {
                             <input type="submit" value="Submit"></input>
                         </form>
                     </div>
-                    <h2>Reviews</h2>
+                    <h2>All Reviews</h2>
                     <div>
                         <div className="overflow-x-auto">
                             <table className="table w-full">

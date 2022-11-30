@@ -5,13 +5,17 @@ import App from './App';
 import AuthProvider from './authprovider/AuthProvider';
 import reportWebVitals from './reportWebVitals';
 import 'react-photo-view/dist/react-photo-view.css';
+import { PhotoProvider} from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <PhotoProvider>
       <AuthProvider>
         <App />
       </AuthProvider>
+    </PhotoProvider>
   </React.StrictMode>
 );
 
