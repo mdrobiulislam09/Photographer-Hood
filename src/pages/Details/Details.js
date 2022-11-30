@@ -1,21 +1,27 @@
-import React, { useContext } from 'react';
-import { useQuery } from 'react-query';
+import React, { useContext, useEffect, useState } from 'react';
+// import { useQuery } from 'react-query';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../authprovider/AuthProvider';
 import Review from '../Review/Review';
 
 const Details = () => {
-    const { data: review = []} = useQuery({
-        queryKey: ['review'],
-        queryFn: async () => {
-            const res = await fetch('http://localhost:5000/review');
-            const data = await res.json();
-            return data;
-        }
-    })
-
     const { user } = useContext(AuthContext)
     const { details, picture, price, rate, servicename, _id } = useLoaderData();
+    const [review, setReview] = useState([]);
+    // const { data: review = []} = useQuery({
+    //     queryKey: ['review'],
+    //     queryFn: async () => {
+    //         const res = await fetch('http://localhost:5000/review');
+    //         const data = await res.json();
+    //         return data;
+    //     }
+    // })\
+    useEffect( () => {
+        fetch(`http://localhost:5000/review?email=${user?.email}`)
+        .then(res => res.json())
+        .then(data => setReview(data))
+    }, [user?.email])
+
 
 
 
@@ -91,6 +97,7 @@ const Details = () => {
                                         review.map((reviews, i) => <Review
                                             key={reviews._id}
                                             reviews={reviews}
+                                            i={i}
                                         ></Review>)
                                     }
                                 </tbody>
