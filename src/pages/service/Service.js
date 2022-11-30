@@ -3,11 +3,8 @@ import { Link } from 'react-router-dom';
 
 const Service = ({service}) => {
 
-    const {_id, picture, servicename} =  service;
+    const {_id, picture, servicename, price, details} =  service;
 
-    // if(i > 2){
-    //     return;
-    // }
 
     return (
 
@@ -17,8 +14,11 @@ const Service = ({service}) => {
             </figure>
             <div className="card-body items-center text-center">
                 <h2 className="card-title">{servicename}</h2>
+                <h3 className="card-title">{price}</h3>
+                <p>{details?.slice(0,100)}</p>
+                <p></p>
                 <div className="card-actions">
-                    <Link to='/details'><button className="btn btn-primary">Details</button></Link>
+                <Link to ={`/services/${_id}`}><button className='btn btn-primary'>See Details</button></Link>
                 </div>
             </div>
         </div>

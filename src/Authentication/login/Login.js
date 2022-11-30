@@ -4,7 +4,7 @@ import { AuthContext } from '../../authprovider/AuthProvider';
 
 const Login = () => {
 
-    const {logIn} = useContext(AuthContext)
+    const { logIn } = useContext(AuthContext)
 
     const handleLogin = event => {
         event.preventDefault();
@@ -13,12 +13,12 @@ const Login = () => {
         const password = form.password.value;
 
         logIn(email, password)
-        .then(result => {
-            const user = result.user;
-            console.log(user)
-            form.reset()
-        })
-        .catch(error => console.error(error))
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                form.reset()
+            })
+            .catch(error => console.error(error))
     }
 
     return (
@@ -30,22 +30,13 @@ const Login = () => {
                     <h1 className="text-5xl font-bold p-4">Login now!</h1>
                     <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
-                            <input
-                                type="text"
-                                name="email"
-                                placeholder="email"
-                                className="input input-bordered"
-                            />
-                        </div>
+                            <label className="label"><span className="label-text">Email</span></label>
+                            <input type="text" name="email" placeholder="email" className="input input-bordered"
+                            /></div>
                         <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
+                            <label className="label"><span className="label-text">Password</span></label>
                             <input
-                                type="text"
+                                type="password"
                                 name="password"
                                 placeholder="password"
                                 className="input input-bordered"

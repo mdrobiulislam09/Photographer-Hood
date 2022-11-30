@@ -18,25 +18,15 @@ const Services = () => {
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ml-10'>
                 {
-                    services.map((service, i) => {
-                        if (i < 3) {
-                            return (
-                                <Service
-                                    key={service._id}
-                                    service={service}
-                                ></Service>
-                            )
-                        } else if (!service) {
-                            return <Service
-                                key={service._id}
-                                service={service}
-                            ></Service>
-                        }
-                    }
-                    )
+                    services.map((service) => <Service
+                        key={service._id}
+                        service={service}
+                    ></Service>)
                 }
             </div>
-            <Link className='btn  ml-10 text-3xl'>See All</Link>
+            <div className='flex justify-center mt-5'>
+                <Link className='btn flex-initial ml-10 text-3xl'>See All</Link>
+            </div>
         </div>
     );
 };
