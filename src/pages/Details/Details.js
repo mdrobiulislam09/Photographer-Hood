@@ -12,13 +12,13 @@ const Details = () => {
     // const { data: review = []} = useQuery({
     //     queryKey: ['review'],
     //     queryFn: async () => {
-    //         const res = await fetch('http://localhost:5000/review');
+    //         const res = await fetch('https://eleven-server.vercel.app/review');
     //         const data = await res.json();
     //         return data;
     //     }
     // })\
     useEffect(() => {
-        fetch(`http://localhost:5000/review?email=${user?.email}`)
+        fetch(`https://eleven-server.vercel.app/review?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setReview(data))
     }, [user?.email])
@@ -41,7 +41,7 @@ const Details = () => {
         }
         console.log(reviewing, user)
 
-        fetch('http://localhost:5000/review', {
+        fetch('https://eleven-server.vercel.app/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -95,6 +95,7 @@ const Details = () => {
                                         <th>Photo</th>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th>Review id</th>
                                         <th>Review</th>
                                     </tr>
                                 </thead>
