@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Review = ({reviews, i}) => {
-    const {_id, address, name, photo, reviewed, location}= reviews;
+    const {address, name, photo, reviewed, location}= reviews;
     return (
         <tr>
                 <th>{i + 1}</th>
